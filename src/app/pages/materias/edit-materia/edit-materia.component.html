@@ -1,0 +1,56 @@
+<div class="row mt-5">
+    <div class="col-9   mx-auto d-block">
+
+        <form class="form" (ngSubmit)="guardar( data._id )" #miFormulario="ngForm" autocomplete="off">
+
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Ej. Brandon conejo"
+                    name="nombreMateria" [ngModel]="data.nombreMateria" 
+                    minlength="3" required 
+                    readonly
+                >
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Horario</mat-label>
+                <input matInput placeholder="Ej. '8:00am-9:00am'"
+                    name="horario" [ngModel]="data.horario" 
+                    minlength="3" required 
+                >
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Cupos</mat-label>
+                <input matInput placeholder="Ej. 20"
+                    name="cupos" [ngModel]="data.cupos" 
+                    type="number" required 
+                >
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Grupo</mat-label>
+                <input placeholder="Ej. 20"
+                    matInput
+                    name="grupo" [ngModel]="data.grupo" 
+                    min="0" max="10"
+                    required 
+                >
+
+            </mat-form-field>
+            <button type="button" mat-raised-button color="warn"(click)="closeDialog()">Cancelar</button>
+            <button mat-raised-button type="submit" class=" float-end" color="primary"  [disabled]="miFormulario.invalid" [mat-dialog-close]="data" cdkFocusInitial >Guardar</button>
+            
+        </form>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,38 @@
+
+
+<mat-sidenav-container fullscreen >
+    <mat-sidenav #sidenav mode="push">
+        <mat-nav-list>
+            <a routerLink="./graficas"
+               mat-list-item
+               (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>bar_chart</mat-icon>
+                <span>Graficos</span>
+            </a>
+            <a routerLink="./materias/listado"
+               mat-list-item
+               (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>auto_stories</mat-icon>
+                <span>Listado de Materias</span>
+            </a>
+            <a routerLink="./clases/listado"
+               mat-list-item
+               (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>school</mat-icon>
+                <span>Listado de clases</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <button mat-icon-button
+            (click)="sidenav.toggle()"
+        >
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+</mat-sidenav-container>
+  

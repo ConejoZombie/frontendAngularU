@@ -1,0 +1,93 @@
+<div class="row mt-5">
+    <div class="col-9 mx-auto d-block">
+
+        <form class="form" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Nombre del estudiante</mat-label>
+                <input  type="text" 
+                    required 
+                    matInput 
+                    placeholder="Ej. Brandon conejo"
+                    formControlName="studentName" 
+                >   
+                
+                <span 
+                    class="form-text text-danger"
+                    *ngIf="campoEsValido('studentName')"
+                    >
+                    El campo es obligatorio.    
+                </span>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Materia y grupo</mat-label>
+            <mat-select
+                
+                formControlName="idMateria" 
+                (change)="changeSuit($event)"
+
+            >
+                <mat-option *ngFor="let materiaNombre of NombreMaterias" 
+                    [value]="materiaNombre._id"
+                >
+                    {{materiaNombre.nombreMateria}}, Grupo: {{materiaNombre.grupo}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+       
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Primer nota</mat-label>
+                <input  type="number" 
+                    required 
+                    matInput 
+                    placeholder="Ej. 100"
+                    formControlName="nota1" 
+                >
+                <span class="form-text text-danger"
+                *ngIf="campoEsValido('nota1')">
+                    *EL campo no puede ser negativo, ni mayor a 100.*
+                </span>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Segunda nota</mat-label>
+                <input matInput placeholder="Ej. 100"
+                    type="number"
+                    formControlName="nota2" 
+                >
+                <span class="form-text text-danger"
+                *ngIf="campoEsValido('nota2')">
+                    *EL campo no puede ser negativo, ni mayor a 100.*
+                </span>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                
+                <mat-label>Tercer nota</mat-label>
+                <input matInput placeholder="Ej. 100"
+                    type="number"
+                    formControlName="nota3" 
+                >
+                <span class="form-text text-danger"
+                *ngIf="campoEsValido('nota3')">
+                    *EL campo no puede ser negativo, ni mayor a 100.*
+                </span>
+
+            </mat-form-field>
+            
+
+            <button type="button" mat-raised-button color="warn" (click)="closeDialog()">Cancelar</button>
+            <button mat-raised-button type="submit" class=" float-end" color="primary" [disabled]="buttonHidden()"  cdkFocusInitial >Guardar</button>
+            
+        </form>
+
+    </div>
+</div>
+
